@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express()
 const bodyParser = require('body-parser');
-const { createPage } = require('./Bot');
+const { createPage } = require('../Bot');
 require('dotenv').config()
 const port = process.env.PORT || 8001
 
