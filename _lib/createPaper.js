@@ -22,8 +22,8 @@ async function createPaper(pageData) {
     };
 
     let options = {
-        ...firefoxOptions,
-        headless: true
+        // ...firefoxOptions,
+        headless: false
         // , slowMo: 250
     }
 
