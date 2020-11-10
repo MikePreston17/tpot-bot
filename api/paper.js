@@ -6,8 +6,8 @@ module.exports = async (request, response) => {
 
     const { content, title, slug, author } = request.body;
 
-    await createPaper({ content, title });
-    // await createPaperViaPlaywright({ content, title })
+    // await createPaper({ content, title });
+    await createPaperViaPlaywright({ content, title })
 
     return response.sendStatus(200)
 }
