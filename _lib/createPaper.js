@@ -2,7 +2,9 @@ const dotenv = require('dotenv')
 dotenv.config()
 const puppeteer = require('puppeteer');
 // const { firefox, chromium, webkit } = require('playwright')
-const playwright = require("playwright-aws-lambda");
+// const playwright = require("playwright-aws-lambda");
+const { chromium } = require("playwright-chromium");
+
 const isDev = process.env.NODE_ENV === "development";
 let userName = process.env.WPUSER //'michael.n.preston@gmail.com'
 let password = process.env.WPPASS //'Mercury2020!!'
@@ -97,15 +99,14 @@ async function createPaperViaPlaywright(pageData) {
     //     headless: false   
     // });
 
-    const browser = await playwright.launchChromium({
-        headless: true
-    });
+    // const browser = await playwright.launchChromium({
+    //     headless: true
+    // });
+
+    const browser = await chromium.launch({ args: ["--no-sandbox"], headless: true, chromiumSandbox: false });
     const context = await browser.newContext();
     const page = await context.newPage();
-    // await page.goto('http://whatsmyuseragent.org/');
-    // await page.screenshot({ path:  `example.png` });
 
-    // const browser = await puppeteer.launch(options)
 
     // Give permission to the browser to copy/paste
     // await browser.defaultBrowserContext().overridePermissions('https://www.thepathoftruth.com', ['clipboard-read', 'clipboard-write']);
